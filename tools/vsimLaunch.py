@@ -166,19 +166,19 @@ def createMovie(nfiles, pos_file, start=0):
         retcode += subprocess.call(pargs)
     return retcode
 
-def runOptimalClosure(tfinal, step, nfiles, npvs, dom, ftemplate, obsnum):
-    nentries = int(tfinal/step * step/1.0) + 1
-    pargs = ["python", SCRIPTS + "buildClosurePlots.py",
-             "-n", str(nentries),
-             "-r", str(nfiles),
-             "-d"]
-    pargs += dom
-    pargs += ["--npvs", str(npvs),
-              "--obs", str(obsnum),
-              # "-m", # "--no-positions",
-             ftemplate]
-    retcode = subprocess.call(pargs)
-    return retcode
+#def runOptimalClosure(tfinal, step, nfiles, npvs, dom, ftemplate, obsnum):
+#    nentries = int(tfinal/step * step/1.0) + 1
+#    pargs = ["python", SCRIPTS + "buildClosurePlots.py",
+#             "-n", str(nentries),
+#             "-r", str(nfiles),
+#             "-d"]
+#    pargs += dom
+#    pargs += ["--npvs", str(npvs),
+#              "--obs", str(obsnum),
+#              # "-m", # "--no-positions",
+#             ftemplate]
+#    retcode = subprocess.call(pargs)
+#    return retcode
 
 def renameFiles(old_nruns, new_nruns, root_name):
     pargs = ["python", SCRIPTS + "renumberResults.py",
@@ -222,10 +222,10 @@ parser.add_argument("--vsim", action="store_true",
                     help="run the vsim part of the script")
 parser.add_argument("--output", action="store_true",
                     help="run the output processing part of the script")
-parser.add_argument("--opt-close", action="store_true",
-                    help="run the optimal closure processing")
-parser.add_argument("--no-opt-close", action="store_true",
-                    help="omit running the optimal closure part of the script")
+#parser.add_argument("--opt-close", action="store_true",
+#                    help="run the optimal closure processing")
+#parser.add_argument("--no-opt-close", action="store_true",
+#                    help="omit running the optimal closure part of the script")
 parser.add_argument("--cov", help="specify value for covariance",
                     type=float,default=None)
 parser.add_argument("--time", help="specify end time of simulation",
@@ -347,13 +347,13 @@ if (args.movie > 0.0 and run_output):
     else:
         print "Done!!"
 
-# Run optimal closure stuff
-if (run_opt_close):
-    print "Running optimal closure..."
-    status = runOptimalClosure(TIME, STEP, nruns, NUMPVS, domain, args.root,
-                               args.obs)
-    if (status != 0):
-        print "Error running optimal closure -- returned", status
-        quit()
-    else:
-        print "Done!!!"
+## Run optimal closure stuff
+#if (run_opt_close):
+#    print "Running optimal closure..."
+#    status = runOptimalClosure(TIME, STEP, nruns, NUMPVS, domain, args.root,
+#                               args.obs)
+#    if (status != 0):
+#        print "Error running optimal closure -- returned", status
+#        quit()
+#    else:
+#        print "Done!!!"
