@@ -13,12 +13,13 @@ import stat_equil as se
 
 # Set locations for various things
 home = os.path.expanduser("~")
-SCRIPTS = home + "/Vortex/tools/"
-RESULTS = home + "/Vortex/output/"
-LOG = home + "/Vortex/log/"
-DATA = home + "/Vortex/data/"
-BIN = home + "/Vortex/bin/"
-MOVIE = home + "/Vortex/movies/"
+VORTEX = "/Vortex/"
+SCRIPTS = home + VORTEX + "tools/"
+RESULTS = home + VORTEX + "output/"
+LOG = home + VORTEX + "log/"
+DATA = home + VORTEX + "data/"
+BIN = home + VORTEX + "bin/"
+MOVIE = home + VORTEX + "movies/"
 
 # Generally useful values
 COV = 0.40
@@ -34,7 +35,7 @@ def buildInput(domain, nruns, npvs, seed, distarr, directory, filename,
     status = 0
 
     if not os.path.exists(directory):
-        os.mkdir(directory)
+        os.makedirs(directory)
     fname = directory + filename
 
     # if distarr[0] == "energy":
@@ -82,12 +83,12 @@ def runVsim(domain, nruns, nprocs, infile, logfile, outfile, orate=1.0,
 
     directory = os.path.dirname(outfile)
     if not os.path.exists(directory):
-        os.mkdir(directory)
+        os.makedirs(directory)
 
     if moviefile != None:
         directory = os.path.dirname(moviefile)
         if not os.path.exists(directory):
-            os.mkdir(directory)
+            os.makedirs(directory)
 
     while complete < nruns:
         # Check if we can launch a process
@@ -309,7 +310,7 @@ if (run_vsim):
     output = RESULTS + args.root + "/" + root + ".out"
     logdir = LOG + args.root + "/"
     if not os.path.exists(logdir):
-        os.mkdir(logdir)
+        os.makedirs(logdir)
     log = logdir + root
     if (args.movie > 0.0):
         args.positions = args.movie
