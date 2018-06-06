@@ -232,8 +232,8 @@ parser.add_argument("--time", help="specify end time of simulation",
                     type=float, default=None)
 parser.add_argument("--step", help="time step size for DNS",
                     type=float, default=None)
-parser.add_argument("--obs", type=int, default=0,
-                    help="observable group number")
+#parser.add_argument("--obs", type=int, default=0,
+#                    help="observable group number")
 
 # Parse arguments
 args = parser.parse_args()
@@ -269,11 +269,11 @@ else:
 root = args.root + "_%0" + str(len(str(nruns))) + "d"
 
 # Figure out which parts of the script to run
-runall = not(args.input or args.vsim or args.output or args.opt_close)
+runall = not(args.input or args.vsim or args.output)# or args.opt_close)
 run_input = (args.input or runall) and not args.no_input
 run_vsim = args.vsim or runall
 run_output = args.output or runall
-run_opt_close = (args.opt_close or runall) and not args.no_opt_close
+#run_opt_close = (args.opt_close or runall) and not args.no_opt_close
 
 # Check if we are appending to an existing set of files
 start_num = 0
