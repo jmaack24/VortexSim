@@ -166,11 +166,11 @@ bool VortexSim::setup(int argc, char **argv)
             integrator = new RuKu4(log, timer, flowcomp,
                                    storage, cmdln.stepSize);
         }
-        else if (cmdln.integrate == Constants::RK45)
-        {
-            integrator = new RuKu45(log, timer, flowcomp,
-                                    storage, cmdln.stepSize);
-        }
+        //else if (cmdln.integrate == Constants::RK45)
+        //{
+        //    integrator = new RuKu45(log, timer, flowcomp,
+        //                            storage, cmdln.stepSize);
+        //}
         else if (cmdln.integrate == Constants::ADMOUL)
         {
             integrator = new AdMoulPC(log, timer, flowcomp,
