@@ -21,10 +21,10 @@
 #include "Hamiltonian.h"
 #include "MomentInertia.h"
 #include "Moments.h"
-#include "ScreenedHamiltonian.h"
-#include "TwoLayerCenter.h"
-#include "TwoLayerHamiltonian.h"
-#include "TwoLayerMoments.h"
+// #include "ScreenedHamiltonian.h"
+// #include "TwoLayerCenter.h"
+// #include "TwoLayerHamiltonian.h"
+// #include "TwoLayerMoments.h"
 
 #include <fstream>
 #include <iostream>
@@ -128,17 +128,17 @@ bool OutputHQ::setup(const std::string &file, unsigned numEntries,
             outputs.push_back(new Hamiltonian(log));
             outputs.push_back(new Moments(log));
         }
-        else if (dom == Constants::SCREENED)
-        {
-            outputs.push_back(new ScreenedHamiltonian(log, defrad));
-            outputs.push_back(new Moments(log));
-        }
-        else if (dom == Constants::TWO_LAYER)
-        {
-            outputs.push_back(new TwoLayerHamiltonian(log, defrad));
-            outputs.push_back(new TwoLayerCenter(log));
-            outputs.push_back(new TwoLayerMoments(log));
-        }
+        // else if (dom == Constants::SCREENED)
+        // {
+        //     outputs.push_back(new ScreenedHamiltonian(log, defrad));
+        //     outputs.push_back(new Moments(log));
+        // }
+        // else if (dom == Constants::TWO_LAYER)
+        // {
+        //     outputs.push_back(new TwoLayerHamiltonian(log, defrad));
+        //     outputs.push_back(new TwoLayerCenter(log));
+        //     outputs.push_back(new TwoLayerMoments(log));
+        // }
         else
         {
             log->writeMsg(Logger::ERROR, "Unimplemented domain type");

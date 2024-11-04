@@ -13,24 +13,23 @@ set(VSIM_SRC
   OutputHQ.cpp
   PointVortex.cpp
   RuKu4.cpp
-  ScreenedFlow.cpp
-  ScreenedHamiltonian.cpp
-  SphereFlow.cpp
+  # ScreenedFlow.cpp
+  # ScreenedHamiltonian.cpp
+  # SphereFlow.cpp
   Storage.cpp
   Timer.cpp
-  TwoLayerCenter.cpp
-  TwoLayerFlow.cpp
-  TwoLayerHamiltonian.cpp
-  TwoLayerMoments.cpp
+  # TwoLayerCenter.cpp
+  # TwoLayerFlow.cpp
+  # TwoLayerHamiltonian.cpp
+  # TwoLayerMoments.cpp
   UnboundedFlow.cpp
   VortexSim.cpp
   main.cpp)
 
 add_executable(vsim ${VSIM_SRC})
 
-find_package(GSL REQUIRED)
-target_include_directories(vsim PUBLIC "${GSL_INCLUDE_DIR}")
-# target_include_directories(vsim PUBLIC "${GSL_LIBRARIES}")
-target_link_libraries(vsim PRIVATE "${GSL_LIBRARIES}")
+# find_package(GSL REQUIRED)
+# target_include_directories(vsim PUBLIC "${GSL_INCLUDE_DIR}")
+# target_link_libraries(vsim PRIVATE "${GSL_LIBRARIES}")
 
 install(TARGETS vsim)

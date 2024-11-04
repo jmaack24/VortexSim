@@ -12,9 +12,9 @@
 
 // Flow computers
 #include "FlowComputer.h"
-#include "ScreenedFlow.h"
-//#include "SphereFlow.h"
-#include "TwoLayerFlow.h"
+// #include "ScreenedFlow.h"
+// #include "SphereFlow.h"
+// #include "TwoLayerFlow.h"
 #include "UnboundedFlow.h"
 
 // Time integrators
@@ -140,14 +140,14 @@ bool VortexSim::setup(int argc, char **argv)
         {
             flowcomp = new UnboundedFlow(log, timer);
         }
-        else if (cmdln.domain == Constants::SCREENED)
-        {
-            flowcomp = new ScreenedFlow(log, timer, cmdln.radius);
-        }
-        else if (cmdln.domain == Constants::TWO_LAYER)
-        {
-            flowcomp = new TwoLayerFlow(log, timer, cmdln.radius);
-        }
+        // else if (cmdln.domain == Constants::SCREENED)
+        // {
+        //     flowcomp = new ScreenedFlow(log, timer, cmdln.radius);
+        // }
+        // else if (cmdln.domain == Constants::TWO_LAYER)
+        // {
+        //     flowcomp = new TwoLayerFlow(log, timer, cmdln.radius);
+        // }
         // else if (cmdln.domain == Constants::SPHERE)
         // {
         //     std::cerr << "****WARN: Sphere vortex simulation "

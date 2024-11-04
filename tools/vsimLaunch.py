@@ -64,8 +64,8 @@ def buildInput(domain, nruns, npvs, seed, distarr, directory, filename,
               fname]
     retcode = subprocess.call(pargs)
     if retcode != 0:
-        print pargs
-        print  genscript, "failed -- aborting"
+        print(pargs)
+        print(genscript, "failed -- aborting")
         status = 1
     return status
 
@@ -78,7 +78,7 @@ def runVsim(domain, nruns, nprocs, infile, logfile, outfile, orate=1.0,
     found = False
 
     if not os.path.exists(BIN + "vsim"):
-        print "Executable vsim not found in", BIN
+        print("Executable vsim not found in", BIN)
         return -1
 
     directory = os.path.dirname(outfile)
@@ -95,7 +95,7 @@ def runVsim(domain, nruns, nprocs, infile, logfile, outfile, orate=1.0,
         N = len(procs)
         if (N < nprocs) and (complete + N < nruns):
             # Launch process
-            print "Launching vsim run", count
+            print( "Launching vsim run", count)
             inf = infile % count
             outf = outfile % count
             logf = logfile % count
@@ -122,7 +122,7 @@ def runVsim(domain, nruns, nprocs, infile, logfile, outfile, orate=1.0,
                     found = True
                     # Process finished -- check for error
                     if retcode != 0:
-                        print "vsim failed -- aborting"
+                        print("vsim failed -- aborting")
                         error = True
                     else:
                         # No error -- remove the process the list and continue
@@ -279,33 +279,33 @@ run_output = args.output or runall
 # Check if we are appending to an existing set of files
 start_num = 0
 if (args.append):
-    print "Renumbering old files..."
+    print("Renumbering old files...")
     import glob
     old_nruns = len(glob.glob(RESULTS + args.root + "/*.out"))
     start_num = old_nruns
     # Rename everything with the rename script
     status = renameFiles(old_nruns, nruns, args.root)
     if (status != 0):
-        print "Renaming old run files -- returned", status
+        print("Renaming old run files -- returned", status)
         quit()
     else:
-        print "Done!"
+        print("Done!")
 
 # Build the initial data files
 if (run_input):
     dirstr = DATA + args.root + "/"
-    print "Building initial data sets..."
+    print("Building initial data sets...")
     status = buildInput(domain, nruns, NUMPVS, seed, darr, dirstr, args.root,
                         start=start_num)
     if (status != 0):
-        print "Error building input -- returned", status
+        print("Error building input -- returned", status)
         quit()
     else:
-        print "Done!!!"
+        print("Done!!!")
 
 # Do the vsim runs
 if (run_vsim):
-    print "Performing runs...."
+    print("Performing runs....")
     infile = DATA + args.root + "/" + root + ".pv"
     output = RESULTS + args.root + "/" + root + ".out"
     logdir = LOG + args.root + "/"
@@ -322,31 +322,31 @@ if (run_vsim):
                      orate=args.outrate, tfinal=TIME, step=STEP,
                      moviefile=mfile, mrate=args.positions, start=start_num)
     if (status != 0):
-        print "Error conducting vsim runs -- returned", status
+        print("Error conducting vsim runs -- returned", status)
         quit()
     else:
-        print "Runs complete!!!"
+        print("Runs complete!!!")
 
 # Process the output
 if (run_output):
-    print "Processing output..."
+    print("Processing output...")
     status = processOutput(domain[0], nruns, TIME, STEP, args.root,
                            args.outrate)
     if (status != 0):
-        print "Error processing output -- returned", status
+        print("Error processing output -- returned", status)
         quit()
     else:
-        print "Done!!!"
+        print("Done!!!")
 
 if (args.movie > 0.0 and run_output):
-    print "Creating movie..."
+    print("Creating movie...")
     mfile = MOVIE + args.root + "/" + root
     status = createMovie(nruns, mfile, start=start_num)
     if (status != 0):
-        print "Error creating movie -- returned", status
+        print("Error creating movie -- returned", status)
         quit()
     else:
-        print "Done!!"
+        print("Done!!")
 
 ## Run optimal closure stuff
 #if (run_opt_close):
