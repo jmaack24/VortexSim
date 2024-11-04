@@ -47,3 +47,8 @@ CMakeUserPresets.json
 
 # Build directories
 build*
+
+# Install directories
+bin
+lib
+include
