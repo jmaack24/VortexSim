@@ -29,6 +29,7 @@
 #include "Storage.h"
 
 #include <math.h>
+#include <stdio.h>
 #include <sstream>
 #include <string.h>
 
@@ -870,7 +871,7 @@ void VortexSim::reportProgress(unsigned width, double prog) const
     // std::cout.flush();
 
     char buff[30];
-    sprintf(buff, "\rProgress: %4.1f%%", prog * 100.0);
+    snprintf(buff, 30, "\rProgress: %4.1f%%", prog * 100.0);
     std::cout << buff;
     std::cout.flush();
 }
