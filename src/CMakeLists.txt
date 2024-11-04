@@ -32,3 +32,5 @@ find_package(GSL REQUIRED)
 target_include_directories(vsim PUBLIC "${GSL_INCLUDE_DIR}")
 # target_include_directories(vsim PUBLIC "${GSL_LIBRARIES}")
 target_link_libraries(vsim PRIVATE "${GSL_LIBRARIES}")
+
+install(TARGETS vsim)

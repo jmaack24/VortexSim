@@ -10,6 +10,9 @@ project(VortexSim VERSION 1.0
 
 set(CMAKE_POSITION_INDEPENDENT_CODE True)
 
+set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_INSTALL_PREFIX "${PROJECT_SOURCE_DIR}")
+
 # add_executable(vsim
 
 add_subdirectory(src)

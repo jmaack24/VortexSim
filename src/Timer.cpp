@@ -141,8 +141,8 @@ void Timer::printTimingInfo(std::ostream &out)
             out << "OTHER     ";
         else
             out << "UNKNOWN   ";
-        sprintf(buffer, "%8.5g%8.2f",
-                totals[count], totals[count]/rtime * 100);
+        snprintf(buffer, 100, "%8.5g%8.2f",
+                 totals[count], totals[count]/rtime * 100);
         out << buffer << std::endl;
         ++count;
     }
